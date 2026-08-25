@@ -11,9 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Old+Mincho:wght@400;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --forest:#2d5016; --moss:#4a7c2f; --meadow:#b8d98d;
-  --mist:#eaf2d8; --clay:#9b7a56; --straw:#d4b483;
-  --cream:#f6f1e7; --deep:#141e08; --accent:#c8683a;
+  --forest:#33513a; --moss:#6b8f5e; --meadow:#c3d9a8;
+  --mist:#f0f3e6; --clay:#c17b4a; --straw:#e8bf7a;
+  --cream:#faf6ee; --deep:#22291d; --accent:#c17b4a;
+  --art:#8a5a8f; --art-bg:#f3ecf4;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden;}
@@ -24,24 +25,22 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--d
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: light;
-    background-color: #f6f1e7 !important;
-    color: #141e08 !important;
+    background-color: #faf6ee !important;
+    color: #22291d !important;
   }
-  body { background: #f6f1e7 !important; color: #141e08 !important; }
+  body { background: #faf6ee !important; color: #22291d !important; }
   nav{display:none;}
-  .tabs-bar { background: rgba(20,30,8,.93) !important; }
-  .card { background: #fff !important; color: #141e08 !important; }
-  .card-name { color: #2d5016 !important; }
+  .tabs-bar { background: rgba(34,41,29,.93) !important; }
+  .card { background: #fff !important; color: #22291d !important; }
+  .card-name { color: #33513a !important; }
   .card-desc { color: #555 !important; }
-  .s-head h2 { color: #2d5016 !important; }
-  .s-head p { color: #9b7a56 !important; }
-  header { background: rgba(20,30,8,.95) !important; }
+  .s-head h2 { color: #33513a !important; }
+  .s-head p { color: #c17b4a !important; }
+  header { background: rgba(34,41,29,.95) !important; }
   .form-card { background: #fff !important; }
-  .form-control { background: #f6f1e7 !important; color: #333 !important; }
-  .modal { background: #f6f1e7 !important; }
-  .tl-body { color: #555 !important; }
-  .tl-title { color: #2d5016 !important; }
-  footer { background: #141e08 !important; }
+  .form-control { background: #faf6ee !important; color: #333 !important; }
+  .modal { background: #faf6ee !important; }
+  footer { background: #22291d !important; }
 }
 /* grain */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;
@@ -49,45 +48,27 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;
   opacity:.45;}
 
 /* ── HEADER ── */
-header{position:relative;z-index:200;background:rgba(20,30,8,.95);backdrop-filter:blur(12px);border-bottom:none;}
+header{position:relative;z-index:200;background:rgba(34,41,29,.95);backdrop-filter:blur(12px);border-bottom:none;}
 .hdr{max-width:1160px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;}
 .logo{display:flex;align-items:baseline;gap:9px;cursor:pointer;text-decoration:none;}
 .logo-jp{font-family:'Lora',serif;font-size:20px;font-weight:500;font-style:italic;color:var(--cream);letter-spacing:.12em;}
 .logo-en{font-size:10px;color:var(--meadow);letter-spacing:.25em;font-weight:300;}
 
-.hero{position:relative;width:100%;line-height:0;display:flex;height:580px;overflow:hidden;}
-.hero-img-wrap{position:relative;flex:0 0 58%;width:58%;overflow:hidden;}
-.hero-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;}
-.hero-title-overlay{position:absolute;bottom:0;left:0;right:0;padding:80px 28px 28px 28px;background:linear-gradient(to bottom,transparent 0%,rgba(5,15,3,.72) 100%);display:flex;flex-direction:column;gap:10px;}
-.hero-side{flex:0 0 42%;width:42%;background:#141e08;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;padding:40px 44px;gap:16px;position:relative;overflow-y:auto;}
-.hero-side::before{content:'';position:absolute;inset:0;z-index:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a7c2f' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
-.hero-side-tag{font-family:'Noto Serif JP',serif;font-size:13px;letter-spacing:.18em;color:#b8d98d;text-transform:uppercase;position:relative;z-index:1;}
-.hero-side-title{font-family:'Lora',serif;font-style:italic;font-weight:500;font-size:clamp(22px,3vw,38px);color:#fff;line-height:1.3;position:relative;z-index:1;}
-.hero-side-sub{font-family:'Noto Serif JP',serif;font-size:12px;color:rgba(255,255,255,.5);line-height:2;position:relative;z-index:1;}
-.hero-side-about{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;}height:240px;padding-right:6px;}
-.hero-side-about::-webkit-scrollbar{width:3px;}
-.hero-side-about::-webkit-scrollbar-thumb{background:rgba(184,217,141,.3);border-radius:2px;}
-.hero-side-about-catch{font-family:'Lora',serif;font-style:italic;font-size:20px;color:#b8d98d;letter-spacing:.04em;display:block;margin-bottom:6px;}
-.hero-side-about-p{font-family:'Noto Serif JP',serif;font-size:15px;color:rgba(255,255,255,.75);line-height:2;}
-.hero-side-about-note{font-family:'Noto Serif JP',serif;font-size:12px;color:rgba(255,255,255,.4);line-height:1.8;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-top:4px;}
-.hero-side-about-quote{border-left:2px solid rgba(184,217,141,.4);padding:8px 0 8px 12px;margin:4px 0;}
-.hero-side-about-quote-src{font-family:'Noto Serif JP',serif;font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;}
-.hero-side-about-quote-phrase{font-family:'Lora',serif;font-style:italic;font-size:18px;color:#b8d98d;letter-spacing:.06em;line-height:1.8;padding:2px 0;}
-.hero-side-line{width:40px;height:1px;background:#4a7c2f;position:relative;z-index:1;}
+.hero{position:relative;width:100%;height:66vh;min-height:380px;max-height:620px;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,17,.90) 0%,rgba(20,24,17,.40) 48%,rgba(20,24,17,.06) 78%);}
+.hero-overlay-content{position:absolute;left:0;right:0;bottom:0;padding:36px 28px 34px;display:flex;flex-direction:column;gap:14px;}
+.hero-eyebrow{font-family:'Noto Serif JP',serif;font-size:12px;letter-spacing:.22em;color:var(--meadow);text-transform:uppercase;}
+.hero-title-main{font-family:'Lora',serif;font-style:italic;font-weight:500;font-size:clamp(30px,7vw,52px);color:#fff;letter-spacing:.05em;line-height:1.15;text-shadow:0 2px 20px rgba(0,0,0,.5);}
+.hero-pillars{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;}
+.pillar-tag{font-family:'Noto Serif JP',serif;font-size:12px;padding:6px 14px;border-radius:20px;letter-spacing:.03em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(4px);white-space:nowrap;}
+.pillar-tag.p-nature{border-color:rgba(195,217,168,.65);}
+.pillar-tag.p-connect{border-color:rgba(225,165,120,.65);}
+.pillar-tag.p-art{border-color:rgba(200,165,205,.65);}
 @media(max-width:640px){
-  .hero{display:block;height:auto;}
-  .hero-img-wrap{width:100%;flex:none;}
-  .hero-img{width:100%;height:auto;max-height:300px;object-fit:cover;object-position:center 40%;}
-  .hero-title-overlay{padding:60px 20px 20px 20px;}
-  .hero-side{display:none;}
+  .hero{height:52vh;min-height:320px;}
+  .hero-overlay-content{padding:22px 18px 24px;gap:10px;}
 }
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,15,3,.0) 0%,rgba(5,15,3,.1) 40%,rgba(5,15,3,.55) 75%,rgba(5,15,3,.82) 100%);}
-.hero-content{position:absolute;bottom:0;left:0;right:0;padding:16px 28px 28px;box-sizing:border-box;z-index:2;}
-.hero-badge{font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.85);margin-bottom:7px;font-weight:300;display:block;text-shadow:0 1px 6px rgba(0,0,0,.6);}
-.hero-title{font-family:'Lora',serif;font-size:clamp(28px,5vw,58px);color:#fff;line-height:1.05;font-weight:500;font-style:italic;letter-spacing:.08em;text-shadow:0 1px 0 rgba(0,0,0,.5),0 2px 24px rgba(0,0,0,.5);margin-bottom:9px;}
-.hero-title em{font-style:normal;color:#fff;}
-.hero-tagline{font-family:'Noto Serif JP',serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.95);letter-spacing:.22em;font-weight:300;margin-bottom:8px;text-shadow:0 1px 8px rgba(0,0,0,.7);}
-.hero-desc{display:none;}
 
 
 /* ── SECTIONS ── */
@@ -106,19 +87,19 @@ header{position:relative;z-index:200;background:rgba(20,30,8,.95);backdrop-filte
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;}
 
 /* ── CARD ── */
-.card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(180,215,140,.22);box-shadow:0 2px 12px rgba(45,80,22,.07);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
-.card:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(45,80,22,.16);}
+.card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(195,217,168,.28);box-shadow:0 2px 12px rgba(51,81,58,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
+.card:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(51,81,58,.18);}
 .card-img-wrap{padding:18px 18px 10px;display:flex;justify-content:center;}
-.card-img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--meadow);box-shadow:0 2px 10px rgba(74,124,47,.18);flex-shrink:0;background:var(--mist);}
+.card-img{width:90px;height:90px;border-radius:16px;object-fit:cover;border:3px solid var(--meadow);box-shadow:0 2px 10px rgba(107,143,94,.2);flex-shrink:0;background:var(--mist);}
 .card-body{padding:4px 14px 16px;flex:1;display:flex;flex-direction:column;align-items:center;}
 .card-name{font-family:'Zen Old Mincho',serif;font-size:14px;color:var(--forest);letter-spacing:.04em;text-align:center;margin-bottom:4px;font-weight:700;line-height:1.4;}
 .card-badges{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:8px;}
 .card-badge{font-size:10px;padding:2px 10px;border-radius:10px;letter-spacing:.06em;font-weight:500;}
-.card-div{height:1px;background:rgba(184,217,141,.3);width:100%;margin-bottom:9px;}
+.card-div{height:1px;background:rgba(195,217,168,.35);width:100%;margin-bottom:9px;}
 .card-desc{font-size:11.5px;color:#555;line-height:1.75;text-align:center;}
 
 /* ── MODAL ── */
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(8,16,4,.8);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px);}
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(20,24,17,.82);z-index:400;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px);}
 .modal-ov.open{display:flex;}
 .modal{background:var(--cream);border-radius:18px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.45);animation:mIn .3s ease;}
 @keyframes mIn{from{opacity:0;transform:scale(.94) translateY(16px);}to{opacity:1;transform:scale(1) translateY(0);}}
@@ -126,35 +107,33 @@ header{position:relative;z-index:200;background:rgba(20,30,8,.95);backdrop-filte
 .modal-body{padding:26px 26px 30px;}
 .modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--clay);margin-top:-4px;line-height:1;}
 .modal-top{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
-.modal-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--meadow);flex-shrink:0;background:var(--mist);}
+.modal-img{width:72px;height:72px;border-radius:14px;object-fit:cover;border:3px solid var(--meadow);flex-shrink:0;background:var(--mist);}
 .modal-name{font-family:'Zen Old Mincho',serif;font-size:20px;color:var(--forest);letter-spacing:.06em;margin-bottom:3px;line-height:1.35;}
 .modal-badge{display:inline-block;font-size:11px;padding:3px 12px;border-radius:10px;letter-spacing:.08em;margin-bottom:14px;}
 .modal-detail{font-size:13.5px;color:#444;line-height:1.95;}
-
-/* ── MAP ── */
-.map-ph{background:linear-gradient(135deg,var(--mist),#d4e8b8);border-radius:12px;height:280px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;border:1px dashed var(--meadow);position:relative;overflow:hidden;}
-.map-ph::before{content:'🗺';font-size:60px;opacity:.15;position:absolute;}
-.map-lbl{font-family:'Zen Old Mincho',serif;font-size:15px;color:var(--moss);letter-spacing:.1em;text-align:center;position:relative;}
-.map-lbl span{display:block;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--clay);margin-top:5px;font-weight:300;}
-
-/* ── HISTORY timeline ── */
-.tl{padding-left:34px;position:relative;}
-.tl::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--moss),var(--meadow));border-radius:2px;}
-.tl-item{position:relative;margin-bottom:32px;}
-.tl-dot{position:absolute;left:-31px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--moss);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--meadow);}
-.tl-year{font-size:11px;color:var(--clay);letter-spacing:.1em;margin-bottom:3px;}
-.tl-title{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--forest);margin-bottom:4px;font-weight:500;}
-.tl-body{font-size:13px;color:#555;line-height:1.9;}
 
 /* ── ABOUT ── */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
 .about-text h3{font-family:'Zen Old Mincho',serif;font-size:19px;color:var(--forest);letter-spacing:.08em;margin-bottom:12px;}
 .about-text p{font-size:13.5px;line-height:2;color:#444;margin-bottom:14px;}
-.about-card{background:#fff;border-radius:14px;padding:24px;border:1px solid rgba(180,215,140,.3);box-shadow:0 2px 10px rgba(45,80,22,.06);}
+.about-card{background:#fff;border-radius:14px;padding:24px;border:1px solid rgba(195,217,168,.35);box-shadow:0 2px 10px rgba(51,81,58,.07);}
 .about-card h4{font-family:'Zen Old Mincho',serif;font-size:14px;color:var(--forest);margin-bottom:13px;padding-bottom:9px;border-bottom:1px solid var(--mist);}
 .irow{display:flex;gap:11px;margin-bottom:8px;font-size:13px;}
 .ilabel{color:var(--clay);min-width:74px;}
 .ivalue{color:#333;line-height:1.7;}
+
+/* ── PILLARS (自然 / つながり / アート) ── */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:32px 0 40px;}
+.pillar-card{background:#fff;border-radius:14px;padding:24px 18px;border-top:4px solid var(--forest);box-shadow:0 2px 14px rgba(51,81,58,.08);}
+.pillar-card.p-connect{border-top-color:var(--clay);}
+.pillar-card.p-art{border-top-color:var(--art);}
+.pillar-icon{font-size:26px;margin-bottom:10px;}
+.pillar-card h3{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--forest);font-weight:600;margin-bottom:12px;letter-spacing:.03em;}
+@media(max-width:700px){.pillars{grid-template-columns:1fr;}}
+
+/* ── PLACEHOLDER FRAME (文章はあとから記入) ── */
+.placeholder-frame{border:1.5px dashed var(--meadow);border-radius:10px;padding:16px 18px;color:#a39c8e;font-size:13px;line-height:1.9;font-style:italic;background:rgba(195,217,168,.08);}
+.placeholder-frame.lg{padding:22px 20px;font-size:13.5px;line-height:2;}
 
 /* ── CONTACT ── */
 .contact-wrap{max-width:580px;margin:0 auto;}
@@ -163,16 +142,16 @@ header{position:relative;z-index:200;background:rgba(20,30,8,.95);backdrop-filte
 .cat-checks{display:flex;flex-wrap:wrap;gap:8px 14px;padding:6px 0;}
 .cat-check-label{display:flex;align-items:center;gap:5px;font-size:13px;color:#444;cursor:pointer;}
 .cat-check-label input{accent-color:var(--forest);width:15px;height:15px;cursor:pointer;}
-.form-card{background:#fff;border-radius:16px;padding:34px;box-shadow:0 4px 22px rgba(45,80,22,.08);border:1px solid rgba(180,215,140,.22);}
+.form-card{background:#fff;border-radius:16px;padding:34px;box-shadow:0 4px 22px rgba(51,81,58,.09);border:1px solid rgba(195,217,168,.28);}
 .form-group{margin-bottom:18px;}
 .form-label{display:block;font-size:13px;color:var(--forest);letter-spacing:.05em;margin-bottom:6px;font-weight:500;}
 .req{color:var(--accent);font-size:10px;margin-left:4px;}
 .form-control{width:100%;padding:10px 14px;border:1.5px solid var(--meadow);border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;color:#333;background:var(--cream);outline:none;transition:border-color .2s,box-shadow .2s;}
-.form-control:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(74,124,47,.1);background:#fff;}
+.form-control:focus{border-color:var(--moss);box-shadow:0 0 0 3px rgba(107,143,94,.12);background:#fff;}
 textarea.form-control{resize:vertical;min-height:115px;}
-.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a7c2f' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px;}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8f5e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px;}
 .submit-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--forest),var(--moss));color:#fff;border:none;border-radius:10px;font-family:'Noto Serif JP',serif;font-size:14px;cursor:pointer;letter-spacing:.12em;transition:all .2s;margin-top:6px;}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(45,80,22,.26);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(51,81,58,.28);}
 .form-ok{display:none;text-align:center;padding:30px;}
 .form-ok .ok-icon{font-size:46px;margin-bottom:12px;}
 .form-ok h3{font-family:'Zen Old Mincho',serif;font-size:19px;color:var(--forest);margin-bottom:7px;}
@@ -180,8 +159,8 @@ textarea.form-control{resize:vertical;min-height:115px;}
 .fok-detail{margin-top:20px;text-align:left;}
 .fok-hint{background:#fffbe6;border:1px solid #f0d060;border-radius:8px;padding:10px 14px;font-size:12.5px;color:#7a6000;margin-bottom:14px;text-align:center;}
 .fok-table{width:100%;border-collapse:collapse;font-size:13px;}
-.fok-table th{width:90px;padding:9px 12px;background:rgba(184,217,141,.15);color:var(--forest);font-weight:600;border:1px solid rgba(184,217,141,.3);white-space:nowrap;vertical-align:top;}
-.fok-table td{padding:9px 12px;border:1px solid rgba(184,217,141,.3);color:#444;word-break:break-all;}
+.fok-table th{width:90px;padding:9px 12px;background:rgba(195,217,168,.18);color:var(--forest);font-weight:600;border:1px solid rgba(195,217,168,.35);white-space:nowrap;vertical-align:top;}
+.fok-table td{padding:9px 12px;border:1px solid rgba(195,217,168,.35);color:#444;word-break:break-all;}
 .fok-msg{white-space:pre-wrap;}
 
 /* ── FOOTER ── */
@@ -198,7 +177,7 @@ footer{background:var(--deep);padding:44px 24px 30px;text-align:center;}
 .card
 .card
 /* ── SCROLL TOP ── */
-.stb{position:fixed;bottom:22px;right:22px;width:40px;height:40px;background:var(--moss);color:#fff;border:none;border-radius:50%;font-size:17px;cursor:pointer;box-shadow:0 4px 13px rgba(45,80,22,.3);opacity:0;transition:opacity .3s,transform .2s;z-index:300;}
+.stb{position:fixed;bottom:22px;right:22px;width:40px;height:40px;background:var(--moss);color:#fff;border:none;border-radius:50%;font-size:17px;cursor:pointer;box-shadow:0 4px 13px rgba(51,81,58,.32);opacity:0;transition:opacity .3s,transform .2s;z-index:300;}
 .stb.vis{opacity:1;}
 .stb:hover{transform:translateY(-2px);}
 
@@ -223,10 +202,10 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
 .mob-nav a{font-family:'Noto Serif JP',serif;font-size:14px;color:var(--meadow);padding:11px 14px;cursor:pointer;border-radius:5px;letter-spacing:.05em;}
 .mob-nav a:hover{background:rgba(255,255,255,.08);color:#fff;}
 /* -- TABS -- */
-.tabs-bar{background:rgba(20,30,8,.93);border-top:1px solid rgba(184,217,141,.1);border-bottom:2px solid rgba(184,217,141,.15);position:sticky;top:0;z-index:100;box-shadow:0 3px 16px rgba(0,0,0,.12);backdrop-filter:blur(12px);}
+.tabs-bar{background:rgba(34,41,29,.93);border-top:1px solid rgba(195,217,168,.12);border-bottom:2px solid rgba(195,217,168,.18);position:sticky;top:0;z-index:100;box-shadow:0 3px 16px rgba(0,0,0,.12);backdrop-filter:blur(12px);}
 .tabs{max-width:1160px;margin:0 auto;padding:0 18px;display:flex;overflow-x:auto;scrollbar-width:none;}
 .tabs::-webkit-scrollbar{display:none;}
-.tab{font-family:'Noto Serif JP',serif;font-size:13px;padding:13px 18px;cursor:pointer;color:rgba(184,217,141,.75);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;letter-spacing:.05em;user-select:none;display:flex;align-items:center;gap:6px;}
+.tab{font-family:'Noto Serif JP',serif;font-size:13px;padding:13px 18px;cursor:pointer;color:rgba(195,217,168,.78);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;letter-spacing:.05em;user-select:none;display:flex;align-items:center;gap:6px;}
 .tab:hover{color:rgba(255,255,255,.9);}
 .tab.active{color:#fff;border-bottom-color:var(--meadow);font-weight:500;}
 .section{display:none;}
@@ -235,14 +214,15 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
 .ham span{display:block;width:22px;height:2px;background:var(--meadow);border-radius:2px;}
 
 /* ── ABOUT ── */
-.about-hero{text-align:center;padding:36px 16px 28px;background:linear-gradient(135deg,rgba(184,217,141,.12) 0%,rgba(184,217,141,.04) 100%);border-radius:12px;margin-bottom:36px;}
+.about-hero{text-align:center;padding:36px 16px 28px;background:linear-gradient(135deg,rgba(195,217,168,.14) 0%,rgba(195,217,168,.04) 100%);border-radius:12px;margin-bottom:12px;}
+.about-eyebrow{font-family:'Noto Serif JP',serif;font-size:12px;letter-spacing:.2em;color:var(--clay);margin-bottom:10px;display:block;}
 .about-catch{font-family:'Lora',serif;font-size:clamp(18px,5vw,32px);font-style:italic;color:var(--forest);line-height:1.5;font-weight:500;margin:0;word-break:keep-all;}
 .about-block{margin-bottom:24px;}
 .about-note{font-family:'Noto Serif JP',serif;font-size:12px;color:#999;line-height:1.9;border-top:1px solid rgba(0,0,0,.08);padding-top:18px;}
 .about-quote-block{border-left:3px solid var(--moss);padding-left:20px;margin-left:4px;}
 .about-quote-src{font-family:'Noto Serif JP',serif;font-size:13px;color:#888;line-height:2;}
 .about-quote-phrase{font-family:'Lora',serif;font-style:italic;font-size:clamp(18px,3vw,24px);color:var(--forest);letter-spacing:.06em;line-height:1.8;padding:4px 0;}
-.about-h3{font-family:'Noto Serif JP',serif;font-size:17px;color:var(--forest);font-weight:600;letter-spacing:.08em;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(184,217,141,.3);}
+.about-h3{font-family:'Noto Serif JP',serif;font-size:17px;color:var(--forest);font-weight:600;letter-spacing:.08em;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(195,217,168,.35);}
 .about-p{font-family:'Noto Serif JP',serif;font-size:15px;line-height:2.1;color:#3a3a3a;margin-bottom:0;overflow-wrap:break-word;}
 .about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .about-card{background:#fff;border-radius:10px;padding:22px 16px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06);}
@@ -254,14 +234,14 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
 
 /* ── DISCLAIMER ── */
 .disc-block{margin-bottom:32px;}
-.disc-h3{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--forest);font-weight:600;letter-spacing:.05em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(184,217,141,.25);}
+.disc-h3{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--forest);font-weight:600;letter-spacing:.05em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(195,217,168,.3);}
 .disc-p{font-size:13px;line-height:1.9;color:#555;margin-bottom:10px;}
 
 /* ── REQUEST MODE ── */
 .req-mode-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
-.req-mode-btn{background:#fff;border:2px solid rgba(184,217,141,.3);border-radius:12px;padding:18px 12px;cursor:pointer;text-align:center;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px;}
-.req-mode-btn:hover{border-color:var(--meadow);background:rgba(184,217,141,.06);}
-.req-mode-btn.active{border-color:var(--forest);background:rgba(184,217,141,.12);}
+.req-mode-btn{background:#fff;border:2px solid rgba(195,217,168,.35);border-radius:12px;padding:18px 12px;cursor:pointer;text-align:center;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.req-mode-btn:hover{border-color:var(--meadow);background:rgba(195,217,168,.08);}
+.req-mode-btn.active{border-color:var(--forest);background:rgba(195,217,168,.15);}
 .req-mode-icon{font-size:28px;line-height:1;}
 .req-mode-title{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:var(--forest);}
 .req-mode-desc{font-size:11px;color:#888;line-height:1.6;}
@@ -273,26 +253,17 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
 
 <!-- HERO -->
 <div class="hero">
-    <div class="hero-img-wrap">
-    <img class="hero-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCALQBDgDASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAgMAAQQFBgcI/8QAUhAAAQQBAwMCBAQDBAYGBwQLAQACAxEhBBIxBUFRE2EGFCJxBzKBkSNCoRUzUrMWJGJ1scEmQ3KC0eEIRVNlkrLwFyc0N1RVojWT8TZEZIOj/8QAGgEAAwEBAQEAAAAAAAAAAAAAAAECAwQFBv/EACoRAQEAAgICAgMBAAICAgMAAAABAhEDEiExBBMUQVFhInEFMhUjQlKB/9oADAMBAAIRAxEAPwD6BooorE2CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKCQASTgDvVSW+jQkIC59ulAFuisiS9mfowUYx8oqF5HcYd2YehOaLgbtFc/Tkd0zsZlz1wcUXA3qKx47yZMfNuA7NzVuK/RgBKCp9RyKALtFIrBhlSCPUUtABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVHNMkK5c4z0Hc0TyiGIu3OOg9axpZGlcu5yf5UASXFzJOcE7V/uj+tQUUUgCiiigAooooAKKKKAJYJ5ITlDx6HpWrb3CTj5ThsZK+lYtORmRgynDDoaAN6iobScTx5xhhwRU1MAooooAKKKKACiiigAooooAKKKKACgkAEk4A70VU1KTZAFBwXOPwoAo3k/nykj7o4X/GoKKKQBRRRQAUUUUAFFFFABRRRQAUUUUASQSmGUOvOOo9a20ZXUMpyp6GsCtHS5MhoyenI/rTAv0UUUAFFFFABRRRQAUUUUAFFFFABWRqD77lhxhRjitesKVg8rsOhYmgBlFFFIAooooAKKKKACiiigAooooAKKKKACpbV/LuI24xnBzUVFAHQUUiMHRWHQjNLTAKKKKACiiigAooooAKKKKACufroKwZF2SMuc7SRmhgNooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAblv/AMe8X+6P5VJTY12Rquc7QBmnUwCiiigAooooAKKKKACiiigArHv02XLcYDfMP8/WtiqWpx7ohIBypwfpQBmUUUUgCiiigAooooAKKKKACiiigAooooAKkt08ydFxkE8j271HV/S48lpCOnA/rQBo0UUUwCiiigAooooAKKKKACiiigApGUMpVuQRg0tFAGJcwmGUqenUfSoq2rqATxFeNw+6T2rHdWRirDDDqKQDaKKKACiiigAooooAKKKKACiilAJIAGSe1ADoo2lkCL1NbcUaxRhF6CoLK38lMsB5h6+3tVmmAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVDc2yTgbuGHQipqKAMOaF4Ww4xnoexqOt91V1KsMqeoqjLp4JJibHs3+NAGdRUslvLH96NsYzkcioqQBRRRQAUVJHDJJjYjEHoccfnVuLTyQDK2PZf8aAKccbyttQZNalraLDhj80mOvYfSp440iXagwKdTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKR0Vxh1DD0IzS0UAR+RF/zyT/vkU5ERM7FVc9cDFOooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="やさとの風景">
-    <div class="hero-title-overlay">
-      <span class="hero-side-tag">茨城県 旧八郷町</span>
-      <div class="hero-side-line"></div>
-      <h1 class="hero-side-title">やさと風土記</h1>
+  <img class="hero-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCALQBDgDASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAgMAAQQFBgcI/8QAUhAAAQQBAwMCBAQDBAYGBwQLAQACAxEhBBIxBUFRE2EGFCJxBzKBkSNCoRUzUrMWJGJ1scEmQ3KC0eEIRVNlkrLwFyc0N1RVojWT8TZEZIOj/8QAGgEAAwEBAQEAAAAAAAAAAAAAAAECAwQFBv/EACoRAQEAAgICAgMBAAICAgMAAAABAhEDEiExBBMUQVFhInEFMhUjQlKB/9oADAMBAAIRAxEAPwD6BooorE2CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKCQASTgDvVSW+jQkIC59ulAFuisiS9mfowUYx8oqF5HcYd2YehOaLgbtFc/Tkd0zsZlz1wcUXA3qKx47yZMfNuA7NzVuK/RgBKCp9RyKALtFIrBhlSCPUUtABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVHNMkK5c4z0Hc0TyiGIu3OOg9axpZGlcu5yf5UASXFzJOcE7V/uj+tQUUUgCiiigAooooAKKKKAJYJ5ITlDx6HpWrb3CTj5ThsZK+lYtORmRgynDDoaAN6iobScTx5xhhwRU1MAooooAKKKKACiiigAooooAKKKKACgkAEk4A70VU1KTZAFBwXOPwoAo3k/nykj7o4X/GoKKKQBRRRQAUUUUAFFFFABRRRQAUUUUASQSmGUOvOOo9a20ZXUMpyp6GsCtHS5MhoyenI/rTAv0UUUAFFFFABRRRQAUUUUAFFFFABWRqD77lhxhRjitesKVg8rsOhYmgBlFFFIAooooAKKKKACiiigAooooAKKKKACpbV/LuI24xnBzUVFAHQUUiMHRWHQjNLTAKKKKACiiigAooooAKKKKACufroKwZF2SMuc7SRmhgNooopAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAblv/AMe8X+6P5VJTY12Rquc7QBmnUwCiiigAooooAKKKKACiiigArHv02XLcYDfMP8/WtiqWpx7ohIBypwfpQBmUUUUgCiiigAooooAKKKKACiiigAooooAKkt08ydFxkE8j271HV/S48lpCOnA/rQBo0UUUwCiiigAooooAKKKKACiiigApGUMpVuQRg0tFAGJcwmGUqenUfSoq2rqATxFeNw+6T2rHdWRirDDDqKQDaKKKACiiigAooooAKKKKACiilAJIAGSe1ADoo2lkCL1NbcUaxRhF6CoLK38lMsB5h6+3tVmmAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVDc2yTgbuGHQipqKAMOaF4Ww4xnoexqOt91V1KsMqeoqjLp4JJibHs3+NAGdRUslvLH96NsYzkcioqQBRRRQAUVJHDJJjYjEHoccfnVuLTyQDK2PZf8aAKccbyttQZNalraLDhj80mOvYfSp440iXagwKdTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKR0Vxh1DD0IzS0UAR+RF/zyT/vkU5ERM7FVc9cDFOooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="やさとの風景">
+  <div class="hero-scrim"></div>
+  <div class="hero-overlay-content">
+    <span class="hero-eyebrow">茨城県 旧八郷町</span>
+    <h1 class="hero-title-main">やさと風土記</h1>
+    <div class="hero-pillars">
+      <span class="pillar-tag p-nature">🌿 自然豊かな町</span>
+      <span class="pillar-tag p-connect">🤝 人がつながる町</span>
+      <span class="pillar-tag p-art">🎨 アートが息づく町</span>
     </div>
   </div>
-  <div class="hero-side">
-    <div class="hero-side-about">
-      <p class="hero-side-about-catch">記して、つないで、やさと風土記</p>
-      <p class="hero-side-about-p">「やさとには面白い人がたくさんいるけど、どれくらいいるのか分からない」 そんな思いから、スタートしました。</p>
-      <p class="hero-side-about-p">かつて各地の風土記が、その土地の産物や地名の由来、人々の暮らしを書き記したように、「やさと風土記」は、いまのやさとに生きる人・仕事・暮らしを記録し、次の世代へつないでいくためのサイトです。</p>
-      <p class="hero-side-about-p">やさとで活動する方に話を聞き、ひとつひとつの営みを記していくことで、この土地の価値を静かに積み重ねていけたらいいなと思っています。</p>
-      <p class="hero-side-about-p">このWebサイトは、やさとに関係する方々の「活動」を幅広く掲載することで、多くの方にやさとの魅力を知っていただくことを目的としています。</p>
-      <p class="hero-side-about-p">活動されている方で、掲載しても良いという方がいらっしゃいましたら、ご連絡お待ちしています。</p>
-      <p class="hero-side-about-note">※やさと風土記は特定の団体・組織による運営ではなく、有志により制作・運営されている非営利のサイトです。</p>
-    </div>
-  </div>
-
 </div>
 
 <!-- TABS -->
@@ -326,63 +297,38 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
   </div>
 </div>
 
-<!-- SECTION: MAP -->
-<div class="section" id="sec-map">
-  <div class="s-inner">
-    <div class="s-head"><p>八郷盆地のどのエリアで誰が活動しているかを地図で確認できます。</p></div>
-    <div class="map-ph" style="min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-      <div style="font-size:2.4rem;">&#x1F5FA;&#xFE0F;</div>
-      <div style="font-size:1.15rem;font-weight:700;color:var(--forest);">只今作成中</div>
-      <div style="font-size:0.9rem;color:#9b7a56;">八郷盆地の活動者マップを準備しています。もうしばらくお待ちください。</div>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION: HISTORY -->
-<div class="section" id="sec-history">
-  <div class="s-inner">
-    <div class="s-head"><p>やさとの過去に興味がある方へ。かつてこの地で活動した人々や、盆地が刻んできた歴史をたどります。</p></div>
-    <div style="min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px 0;">
-      <div style="font-size:2.4rem;">&#x1F4DC;</div>
-      <div style="font-size:1.15rem;font-weight:700;color:var(--forest);">只今作成中</div>
-      <div style="font-size:0.9rem;color:#9b7a56;">やさとの歴史・ヒストリーページを準備しています。もうしばらくお待ちください。</div>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
-
 <!-- SECTION: ABOUT -->
 <div class="section" id="sec-about">
   <div class="s-inner">
     <div class="about-hero">
-      <p class="about-catch">記して、つないで、やさと風土記</p>
+      <span class="about-eyebrow">やさと風土記とは</span>
+      <p class="about-catch placeholder-frame">（ここにキャッチコピーを入力してください）</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar-card p-nature">
+        <div class="pillar-icon">🌿</div>
+        <h3>自然豊かな町</h3>
+        <div class="placeholder-frame">（ここに文章を入力してください）</div>
+      </div>
+      <div class="pillar-card p-connect">
+        <div class="pillar-icon">🤝</div>
+        <h3>人々のつながりが豊かな町</h3>
+        <div class="placeholder-frame">（ここに文章を入力してください）</div>
+      </div>
+      <div class="pillar-card p-art">
+        <div class="pillar-icon">🎨</div>
+        <h3>アート好きな人が多い町</h3>
+        <div class="placeholder-frame">（ここに文章を入力してください）</div>
+      </div>
     </div>
 
     <div class="about-block">
-      <p class="about-p">「やさとには面白い人がたくさんいるけど、どれくらいいるのか分からない」 そんな思いから、スタートしました。</p>
+      <div class="placeholder-frame lg">（やさと風土記についての紹介文をここに入力してください）</div>
     </div>
 
     <div class="about-block">
-      <p class="about-p">かつて各地の風土記が、その土地の産物や地名の由来、人々の暮らしを書き記したように、「やさと風土記」は、いまのやさとに生きる人・仕事・暮らしを記録し、次の世代へつないでいくためのサイトです。</p>
-    </div>
-
-    <div class="about-block">
-      <p class="about-p">やさとで活動する方に話を聞き、ひとつひとつの営みを記していくことで、この土地の価値を静かに積み重ねていけたらいいなと思っています。</p>
-    </div>
-
-    <div class="about-block">
-      <p class="about-p">このWebサイトは、やさとに関係する方々の「活動」を幅広く掲載することで、多くの方にやさとの魅力を知っていただくことを目的としています。</p>
-    </div>
-
-    <div class="about-block">
-      <p class="about-p">活動されている方で、掲載しても良いという方がいらっしゃいましたら、ご連絡お待ちしています。</p>
-    </div>
-
-    <div class="about-block">
-      <p class="about-note">※やさと風土記は特定の団体・組織による運営ではなく、有志により制作・運営されている非営利のサイトです。</p>
+      <div class="placeholder-frame lg">（運営についての注記などがあればここに入力してください）</div>
     </div>
   </div>
 </div>
@@ -419,7 +365,7 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
             <input class="form-control" id="req-email" type="email" placeholder="例：info@example.com">
           </div>
           <div class="form-group">
-            <label class="form-label">カテゴリー（必須） <span style="font-size:11px;color:var(--bark);font-weight:400;">（複数選択可）</span></label>
+            <label class="form-label">カテゴリー（必須） <span style="font-size:11px;color:var(--clay);font-weight:400;">（複数選択可）</span></label>
             <div class="cat-checks">
               <label class="cat-check-label"><input type="checkbox" name="req-cat" value="食"> 食</label>
               <label class="cat-check-label"><input type="checkbox" name="req-cat" value="ものづくり"> ものづくり</label>
@@ -431,7 +377,7 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label">活動の紹介文（任意） <span style="font-size:11px;color:var(--bark);font-weight:400;">（目安：20文字以内）</span></label>
+            <label class="form-label">活動の紹介文（任意） <span style="font-size:11px;color:var(--clay);font-weight:400;">（目安：20文字以内）</span></label>
             <textarea class="form-control" id="req-desc" rows="4" placeholder="本Webサイトに掲載する文章です。「お任せ」で問題ない場合は、運営者が適切な文章を掲載しますので、空欄のままでも問題ございません。"></textarea>
           </div>
           <div class="form-group">
@@ -442,7 +388,7 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
             <p style="font-size:13px;color:var(--clay);line-height:1.85;">掲載するアイコン画像は別途、ご相談させていただきます。</p>
           </div>
           <div class="form-group">
-            <label class="form-label">備考（任意）<span style="font-size:11px;color:var(--bark);font-weight:400;">　質問・依頼事項など</span></label>
+            <label class="form-label">備考（任意）<span style="font-size:11px;color:var(--clay);font-weight:400;">　質問・依頼事項など</span></label>
             <textarea class="form-control" id="req-note" rows="3" placeholder="ご不明な点やご要望があればお書きください"></textarea>
           </div>
           <div id="req-rate-msg" style="color:#c0392b;font-size:12px;display:none;margin-bottom:8px;"></div>
@@ -473,7 +419,7 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
         <div id="req-ok" style="display:none;text-align:center;padding:40px 0;">
           <div style="font-size:36px;margin-bottom:16px;">✓</div>
           <h3 style="color:var(--forest);margin-bottom:8px;">送信しました</h3>
-          <p id="req-ok-msg" style="color:var(--bark);font-size:14px;"></p>
+          <p id="req-ok-msg" style="color:var(--clay);font-size:14px;"></p>
         </div>
 
       </div>
@@ -567,7 +513,7 @@ const CAT={
   music: {label:'音楽',       color:'#8a003c',bg:'#fce8f0',bar:'#a0004a'},
 };
 
-const PLACEHOLDER_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23eaf2d8'/%3E%3Ctext x='50' y='63' font-size='42' text-anchor='middle' fill='%234a7c2f' font-family='sans-serif'%3E%3F%3C/text%3E%3C/svg%3E";
+const PLACEHOLDER_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23f0f3e6'/%3E%3Ctext x='50' y='63' font-size='42' text-anchor='middle' fill='%236b8f5e' font-family='sans-serif'%3E%3F%3C/text%3E%3C/svg%3E";
 
 const PEOPLE=[
 {name:"FROM BEAN TO TASOGARE",desc:"常陸国八郷ノ町「Japanese × Street」",url:"https://www.instagram.com/tasogare1995/",cats:["food"],img:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAJEAkQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD69ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=",cat:"food"},
