@@ -60,11 +60,6 @@ header{position:relative;z-index:200;background:rgba(34,41,29,.95);backdrop-filt
 .hero-overlay-content{position:absolute;left:0;right:0;bottom:0;padding:36px 28px 34px;display:flex;flex-direction:column;gap:14px;}
 .hero-eyebrow{font-family:'Noto Serif JP',serif;font-size:12px;letter-spacing:.22em;color:var(--meadow);text-transform:uppercase;}
 .hero-title-main{font-family:'Lora',serif;font-style:italic;font-weight:500;font-size:clamp(30px,7vw,52px);color:#fff;letter-spacing:.05em;line-height:1.15;text-shadow:0 2px 20px rgba(0,0,0,.5);}
-.hero-pillars{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;}
-.pillar-tag{font-family:'Noto Serif JP',serif;font-size:12px;padding:6px 14px;border-radius:20px;letter-spacing:.03em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(4px);white-space:nowrap;}
-.pillar-tag.p-nature{border-color:rgba(195,217,168,.65);}
-.pillar-tag.p-connect{border-color:rgba(225,165,120,.65);}
-.pillar-tag.p-art{border-color:rgba(200,165,205,.65);}
 @media(max-width:640px){
   .hero{height:52vh;min-height:320px;}
   .hero-overlay-content{padding:22px 18px 24px;gap:10px;}
@@ -90,7 +85,10 @@ header{position:relative;z-index:200;background:rgba(34,41,29,.95);backdrop-filt
 .card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(195,217,168,.28);box-shadow:0 2px 12px rgba(51,81,58,.08);cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
 .card:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(51,81,58,.18);}
 .card-img-wrap{padding:18px 18px 10px;display:flex;justify-content:center;}
-.card-img{width:90px;height:90px;border-radius:16px;object-fit:cover;border:3px solid var(--meadow);box-shadow:0 2px 10px rgba(107,143,94,.2);flex-shrink:0;background:var(--mist);}
+.card-avatar{position:relative;display:inline-flex;}
+.card-img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--meadow);box-shadow:0 2px 10px rgba(107,143,94,.2);flex-shrink:0;background:var(--mist);}
+.card-ig-badge{position:absolute;right:-2px;bottom:-2px;width:24px;height:24px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,.25);}
+.card-ig-badge svg{width:14px;height:14px;display:block;}
 .card-body{padding:4px 14px 16px;flex:1;display:flex;flex-direction:column;align-items:center;}
 .card-name{font-family:'Zen Old Mincho',serif;font-size:14px;color:var(--forest);letter-spacing:.04em;text-align:center;margin-bottom:4px;font-weight:700;line-height:1.4;}
 .card-badges{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:8px;}
@@ -107,7 +105,7 @@ header{position:relative;z-index:200;background:rgba(34,41,29,.95);backdrop-filt
 .modal-body{padding:26px 26px 30px;}
 .modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--clay);margin-top:-4px;line-height:1;}
 .modal-top{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
-.modal-img{width:72px;height:72px;border-radius:14px;object-fit:cover;border:3px solid var(--meadow);flex-shrink:0;background:var(--mist);}
+.modal-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--meadow);flex-shrink:0;background:var(--mist);}
 .modal-name{font-family:'Zen Old Mincho',serif;font-size:20px;color:var(--forest);letter-spacing:.06em;margin-bottom:3px;line-height:1.35;}
 .modal-badge{display:inline-block;font-size:11px;padding:3px 12px;border-radius:10px;letter-spacing:.08em;margin-bottom:14px;}
 .modal-detail{font-size:13.5px;color:#444;line-height:1.95;}
@@ -258,11 +256,6 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
   <div class="hero-overlay-content">
     <span class="hero-eyebrow">茨城県 旧八郷町</span>
     <h1 class="hero-title-main">やさと風土記</h1>
-    <div class="hero-pillars">
-      <span class="pillar-tag p-nature">🌿 自然豊かな町</span>
-      <span class="pillar-tag p-connect">🤝 人がつながる町</span>
-      <span class="pillar-tag p-art">🎨 アートが息づく町</span>
-    </div>
   </div>
 </div>
 
@@ -321,14 +314,6 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:#fff;}
         <h3>アート好きな人が多い町</h3>
         <div class="placeholder-frame">（ここに文章を入力してください）</div>
       </div>
-    </div>
-
-    <div class="about-block">
-      <div class="placeholder-frame lg">（やさと風土記についての紹介文をここに入力してください）</div>
-    </div>
-
-    <div class="about-block">
-      <div class="placeholder-frame lg">（運営についての注記などがあればここに入力してください）</div>
     </div>
   </div>
 </div>
@@ -513,7 +498,9 @@ const CAT={
   music: {label:'音楽',       color:'#8a003c',bg:'#fce8f0',bar:'#a0004a'},
 };
 
-const PLACEHOLDER_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23f0f3e6'/%3E%3Ctext x='50' y='63' font-size='42' text-anchor='middle' fill='%236b8f5e' font-family='sans-serif'%3E%3F%3C/text%3E%3C/svg%3E";
+const PLACEHOLDER_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23f0f3e6'/%3E%3Ctext x='50' y='63' font-size='42' text-anchor='middle' fill='%236b8f5e' font-family='sans-serif'%3E%3F%3C/text%3E%3C/svg%3E";
+
+const IG_ICON = "<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='20' height='20' rx='6' stroke='#c1387a' stroke-width='2'/><circle cx='12' cy='12' r='5' stroke='#c1387a' stroke-width='2'/><circle cx='18' cy='6' r='1.3' fill='#c1387a'/></svg>";
 
 const PEOPLE=[
 {name:"FROM BEAN TO TASOGARE",desc:"常陸国八郷ノ町「Japanese × Street」",url:"https://www.instagram.com/tasogare1995/",cats:["food"],img:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAJEAkQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD69ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=",cat:"food"},
@@ -542,10 +529,10 @@ function renderGrid(data,id){
     const c=primaryCat(p);
     return `<div class="card"  >
       <div class="card-img-wrap">
-        <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy"
-          style="border-color:${c.bar};${p.url?'cursor:pointer':''}"
-          ${p.url?`onclick="window.open('${p.url}','_blank')" title="Instagramを開く"`:''}
-        >
+        <div class="card-avatar" ${p.url?`onclick="window.open('${p.url}','_blank')" style="cursor:pointer" title="Instagramを開く"`:''}>
+          <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy" style="border-color:${c.bar}">
+          ${p.url?`<span class="card-ig-badge">${IG_ICON}</span>`:''}
+        </div>
       </div>
       <div class="card-body">
         <div class="card-name">${p.name}</div>
@@ -567,10 +554,10 @@ function renderFiltered(cat,id){
     const c=primaryCat(p);
     return `<div class="card"  >
       <div class="card-img-wrap">
-        <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy"
-          style="border-color:${c.bar};${p.url?'cursor:pointer':''}"
-          ${p.url?`onclick="window.open('${p.url}','_blank')" title="Instagramを開く"`:''}
-        >
+        <div class="card-avatar" ${p.url?`onclick="window.open('${p.url}','_blank')" style="cursor:pointer" title="Instagramを開く"`:''}>
+          <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy" style="border-color:${c.bar}">
+          ${p.url?`<span class="card-ig-badge">${IG_ICON}</span>`:''}
+        </div>
       </div>
       <div class="card-body">
         <div class="card-name">${p.name}</div>
